@@ -1,11 +1,11 @@
 
-//----- import ------------
-//include ../ext/react-0.13.3/build/react.min.js
-//include ../ext/jquery/jquery-2.1.4.min.js
-//include ../ext/bootstrap-3.3.4/js/bootstrap.min.js
+//----- std libs ---------
+//include react-0.13.3/build/react.min.js
+//include jquery/jquery-2.1.4.min.js
+//include bootstrap-3.3.4/js/bootstrap.min.js
 // todo: remove bootstrap and jquery
 
-//----- std libs ------------
+//-------- libs ------------
 //include ../lib/utils.js
 //include ../lib/Element.js
 //include ./Application.jsx

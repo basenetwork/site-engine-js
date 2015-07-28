@@ -1,6 +1,6 @@
 
 //----- import ------------
-//include ../ext/react-0.13.3/build/react.min.js
+//include react-0.13.3/build/react.min.js
 
 //----- std libs ------------
 //include ../lib/utils.js

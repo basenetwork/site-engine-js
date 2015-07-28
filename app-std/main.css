@@ -1,5 +1,5 @@
-@import "/src/bootstrap-3.3.4/css/bootstrap.min.css";
-@import "/app-std/components.css";
+@import "bootstrap-3.3.4/css/bootstrap.min.css";
+@import "./components.css";
 
 html, body {
     width: auto;
