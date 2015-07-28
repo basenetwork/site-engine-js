@@ -1,0 +1,131 @@
+@import "/src/bootstrap-3.3.4/css/bootstrap.min.css";
+@import "/app-std/components.css";
+
+html, body {
+    width: auto;
+    height: 100%;
+    overflow: hidden;
+    background: transparent;
+}
+
+body{
+    /*border:1px solid red;*/
+}
+.settings-block {
+    width: 100%;
+    max-width: 400px;
+    position: fixed;
+    top:0;
+    right: 0;
+    height: 100%;
+    border-left: 1px solid #999;
+    background: #fff;
+    transition: 0.5s;
+}
+.btn-close:hover, .btn-close {
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2em;
+    color: #888;
+    position: fixed;
+    top:0;
+    right: 0;
+    text-align: center;
+    width: 50px;
+}
+.top-icon{
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 2px;
+    text-decoration: none!important;
+}
+.top-icon .user-icon img {
+    width: 46px;
+    height: 46px;
+}
+
+.window {
+    padding: 60px 2px 2px 2px;
+    position: fixed;
+    top:0;
+    right: 0;
+    height: 100%;
+}
+.window-expand-0 {
+    width: 50px;
+}
+.window-expand-1 {
+    width: 100%;
+    background: rgba(50,50,50,0.7);
+}
+
+h4 {
+   font-weight: 200;
+    color: #888;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.2em;
+}
+
+.profile-info .user-icon {
+    margin: 0 auto;
+    width: 60px;
+    height: 60px;
+    font-size: 2em;
+}
+.profile-info {
+    text-align: center;
+    padding: 2em 0;
+}
+
+.block {
+    margin: 1em 0;
+}
+.profile-reg-status {
+    text-align: center;
+    color: #888;
+    font-size: 12px;
+}
+.keys-info input {
+    font-size: 11px;
+}
+/* accounts */
+ul.accounts-list {
+    list-style: none;
+    padding: 0;
+}
+.accounts-list li {
+    float: left;
+    margin: 0;
+    padding: 0;
+    margin-right: 0.2em;
+    cursor: pointer;
+    opacity: 0.5;
+}
+.accounts-list li button {
+    background: #ffb40d;
+    color: #fff;
+    border: none;
+    font-size: 18px!important;
+    margin-left: 1em;
+}
+.accounts-list li:hover,
+.accounts-list li.active {
+    opacity: 1;
+}
+.accounts-list li button,
+.accounts-list .user-icon,
+.accounts-list .user-icon img {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+    border-radius: 100px;
+}
+/* registration form */
+form.reg-form {
+    display: block;
+    border: 1px solid #ccc;
+    margin: 1em;
+    padding: 0 1em 1em 1em;
+    border-radius: 5px;
+}

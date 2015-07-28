@@ -1,0 +1,264 @@
+a:hover {
+    text-decoration: none;
+}
+.btn-edit {
+    background: transparent;
+    border-color: #eee;
+    transition: 0.3s;
+}
+.btn-edit:hover {
+    background-color: rgba(255,255,255,0.2);
+    border-color: #fff;
+}
+
+.btn-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color:#999;
+    text-decoration: none!important;
+    font-size: 28px;
+    padding: 0 0.5em 0.1em 0.5em;
+    opacity: 0.8;
+    border-radius: 0 0 0 15px;
+}
+.btn-close:hover {
+    opacity: 1;
+}
+
+/******* inputs *********/
+.input-icon {
+    display:  block;
+    min-width: 80px;
+}
+.input-icon a:hover {
+    background: #3c3c3c;
+    color:#fff;
+    text-decoration: none;
+}
+.input-icon .active {
+    color: #fff;
+    background-color: #423b7c;
+}
+.input-icon a {
+    display: inline-block;
+    width: 28px;
+    padding: 3px 0;
+    text-align: center;
+    color: #333;
+}
+
+.input-file {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+}
+.input-file span {
+    color: #999;
+}
+.input-file input {
+    opacity: 0;
+    position: absolute;
+    cursor: pointer;
+    top:0; left:0;
+    height: 70px;
+    width: 70px;
+}
+.input-file b {
+    display: block;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 100px;
+    background: #ddd;
+    color: #888;
+    font-size: 12px;
+    text-align: center;
+    font-weight: normal;
+}
+.input-file a:hover {
+    background: rgba(0,0,0,0.7);
+}
+.input-file a {
+    position: absolute;
+    top:-2px; right: -2px;
+    background: rgba(0,0,0,0.5);
+    height: 20px;
+    width: 20px;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 4px;
+    text-decoration: none!important;
+}
+.input-file div {
+    position: absolute;
+    /*display: inline-block;*/
+    /*width: 40px;*/
+    /*height: 34px;*/
+    top:0; left:0; right:0; bottom: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.input-color {
+    max-width: 35px;
+    padding: 0 1px;
+}
+
+.datetime {
+    color: #ccc;
+    font-size: 80%;
+}
+
+/******* photo *********/
+.photo-item {
+    margin-top: 1em;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    max-width: 600px;
+    position: relative;
+}
+.photo-cont {
+    text-align: center;
+    background: #000;
+    min-height: 100px;
+}
+.photo-cont img {
+    max-width: 100%;
+}
+.photo-desc {
+    transition: 0.5s;
+    padding: 0.5em 1em;
+    position: absolute;
+    background-color: rgba(100,100,100,0.5);
+    width: 100%;
+    bottom:-80px;
+    color: #fff;
+}
+.photo-item:hover .photo-desc{
+    bottom:0;
+}
+.photo-page {
+    position: relative;
+}
+.photo-page .btn-close {
+    color: #fff;
+}
+.photo-page .photo-description {
+    padding: 0.5em 4em;
+    background-color: #000;
+    color: #fff;
+    margin-bottom: 3em;
+}
+
+/******* video *********/
+.video-item {
+    margin-top: 1em;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    max-width: 600px;
+    position: relative;
+}
+.video-cont {
+    text-align: center;
+    background: #000;
+    min-height: 100px;
+}
+.video-cont video {
+    max-width: 100%;
+    display: block!important;
+    background: #000;
+    margin: 0 auto;
+}
+.video-desc {
+    transition: 0.5s;
+    padding: 0.5em 1em;
+    position: absolute;
+    background-color: rgba(100,100,100,0.5);
+    width: 100%;
+    bottom:-80px;
+    color: #fff;
+}
+.video-item:hover .video-desc{
+    bottom:0;
+}
+.video-page {
+    position: relative;
+}
+.video-page .btn-close {
+    color: #fff;
+}
+.video-page .video-description {
+    padding: 0.5em 4em;
+    background-color: #000;
+    color: #fff;
+    margin-bottom: 3em;
+}
+
+/******* article *********/
+.article-page,
+.article-item {
+    font-family: 'Georgia', serif;
+}
+.article-item {
+    margin: 1em 1em 3em 1em;
+}
+.article-item .user-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 0.5em;
+}
+.article-cont {
+    /*padding-top: 1em;*/
+}
+.article-image img,
+.article-cont img {
+    width: 100%;
+}
+.article-info {
+    /*margin-bottom: 1em;*/
+}
+.article-content {
+    font-size: 120%;
+    color: #333;
+    line-height: 1.6em;
+    font-weight: 400;
+    white-space: pre-wrap;
+}
+
+/******* comment *********/
+.comment {
+    list-style: none;
+    min-height: 70px;
+    margin-top: 1.5em;
+}
+
+/******* user icon *********/
+.user-icon  {
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    overflow: hidden;
+}
+.user-icon img {
+    width: 100%;
+    height: 100%;
+}
+.user-icon-anon:hover,
+.user-icon-anon {
+    text-align: center;
+    font-size: 1.4em;
+    padding-top: 0.3em;
+    text-decoration: none!important;
+    opacity: 0.5;
+    color: #fff;
+}
+.user-icon-anon i {
+}

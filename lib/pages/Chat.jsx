@@ -1,0 +1,3 @@
+var Chat = $class(Page, {
+
+});
