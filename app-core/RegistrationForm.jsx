@@ -50,7 +50,7 @@ var RegistrationForm = $class({
     },
 
     reload: function() {
-        location.reload();
+        application.init();
     },
 
     close: function() {

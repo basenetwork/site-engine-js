@@ -105,7 +105,9 @@ var Application = $class({
             });
             if(err || !cert.rsign) return;
             base.Accounts.saveAccounts();
-            this.forceUpdate();
+            this.setState({
+                fRegForm: false
+            });
         }.bind(this));
     },
 
