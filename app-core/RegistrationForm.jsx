@@ -51,12 +51,12 @@ var RegistrationForm = $class({
 
         var name = document.getElementById('regName').value.trim().toLowerCase();
         var code = document.getElementById('regInviteCode').value.trim();
-        var cc = code.match(/^([a-z0-9]{10})([a-f0-9]{4})$/);
+        var cc = code.match(/^([a-zA-Z0-9]{14})([a-f0-9]{4})$/);
 
         if(!/^[a-z][a-z0-9\-]{2,60}$/.test(name)) {
             return this.setState({error: transl("Incorrect domain name"), err: null});
         }
-        if(!cc || !_.sha256(cc[1]).substr(0, 4)) {
+        if(!cc || !_.sha256(cc[1]).substr(0, 4)) { // check CRC
             return this.setState({error: transl("Invalid invite code"), err: null});
         }
         this.setState({
