@@ -7,30 +7,38 @@ var RegistrationForm = $class({
         return (
         <div className="panel panel-primary">
             <div className="panel-heading">{transl("Registration")}</div>
+            {this.state.success?
+                <div  className="panel-body">
+                    <div className="alert alert-success">
+                        {this.state.success}
+                    </div>
+                    <button className="btn btn-success" onClick={this.reload}>{transl("Continue")}</button>
+                </div>
+            :
             <form className="panel-body" onSubmit={this.onSubmit}>
                 <div className="form-group">
                     <label for="regName">{transl("nickname")}</label>
-                    <input type="text" className="form-control" id="regName" placeholder="my-domain.base.network" />
+                    <input type="text" className="form-control" id="regName" placeholder="my-domain.base.network" disabled={!!this.state.progress} />
                 </div>
                 <div className="form-group">
                     <label for="regInviteCode">
                         {transl("invite code")}
                     </label>
-                    <input type="text" className="form-control" id="regInviteCode" placeholder={transl("invite code")} />
+                    <input type="text" className="form-control" id="regInviteCode" placeholder={transl("invite code")} disabled={!!this.state.progress} />
                     <small>(<a href="#" onClick={this.onGetInviteCode}>{transl("Receive the invite code")}</a>)</small>
                 </div>
                 {this.state.error && <div className="alert alert-danger">
                     {this.state.error}
                 </div>}
                 {this.state.progress && <div className="progress">
-                    <div className="progress-bar progress-bar-striped active" style={{width: (this.state.progress/4*100|0)+"%"}} />
+                    <div className="progress-bar progress-bar-striped active" style={{width: Math.min(100, this.state.progress/8*100|0)+"%"}} />
                 </div>}
                 <div className="form-group">
-                    <button className="btn btn-primary" type="submit">{transl("Sign Me Up")}</button>
+                    <button className="btn btn-primary" disabled={!!this.state.progress} type="submit">{transl("Sign Me Up")}</button>
                 &nbsp;
-                    <button className="btn btn-default" onClick={this.onClose}>{transl("Close")}</button>
+                    <button className="btn btn-default" disabled={!!this.state.progress} onClick={this.onClose}>{transl("Close")}</button>
                 </div>
-            </form>
+            </form>}
         </div>
         );
     },
@@ -39,6 +47,10 @@ var RegistrationForm = $class({
         ev && ev.preventDefault();
         ev && ev.stopPropagation();
         this.close();
+    },
+
+    reload: function() {
+        location.reload();
     },
 
     close: function() {
@@ -52,6 +64,9 @@ var RegistrationForm = $class({
         var name = document.getElementById('regName').value.trim().toLowerCase();
         var code = document.getElementById('regInviteCode').value.trim();
         var cc = code.match(/^([a-zA-Z0-9]{14})([a-f0-9]{4})$/);
+        var domain = name + "." + base.registrars[0].zone;
+        var cert = base.Accounts.getCurrentCertificate();
+        var cert64 = cert.toString();
 
         if(!/^[a-z][a-z0-9\-]{2,60}$/.test(name)) {
             return this.setState({error: transl("Incorrect domain name"), err: null});
@@ -69,7 +84,7 @@ var RegistrationForm = $class({
         base.core.requestData({
             storage: "N",
             ring: 0,
-            uid: name + "." + base.registrars[0].zone
+            uid: domain
         }, function(err, packs) {
             if(err) return this.setState({ error: transl("Error of checking domain information!"), err: err, progress: null});
             if(packs.length) return this.setState({ error: transl("Domain is already registered by another person."), progress: null});
@@ -84,7 +99,7 @@ var RegistrationForm = $class({
                 pos: ""
             }, function(err, packs) {
                 if(err) return this.setState({ error: transl("Error of checking invite code information!"), err: err, progress: null});
-                if(!packs.length) return this.setState({ error: transl("This invite code is already used"), err: err, progress: null});
+                if(packs.length) return this.setState({ error: transl("This invite code is already used"), err: err, progress: null});
                 this.setState({ progress: 3 });
 
                 // registration
@@ -96,15 +111,45 @@ var RegistrationForm = $class({
                     senderTag: "registration",          // anonymous sender
                     recipient: base.registrars[0].cert, // encrypt message for recipient
                     data: {
-                        cert: base.Accounts.getCurrentCertificate().toString(),
+                        cert: cert64,
                         name: name,
                         code: code
                     }
                 }, function(err, res){
                     if(err) return this.setState({ error: transl("Error: Can not register"), err: err, progress: null});
-                    this.setState({ progress: 4 });
 
-                    log('RES', res)
+                    this.setState({
+                        progress: 4,
+                        success: null //"Request was successfully sent to the registrar. Please wait. Registration will be completed for a few minutes."
+                    });
+
+                    var _interval = 2111, _checkDomain = function(){
+                        this.setState({ progress: this.state.progress + 0.1 });
+                        base.core.requestData({
+                            storage: "N",
+                            ring: 0,
+                            uid: domain
+                        }, function(err, packs) {
+                            this.setState({ progress: this.state.progress + 0.1 });
+                            if (err) this.setState({ error: transl("Error of checking domain information!"), err: err });
+
+                            if (err || !packs || !packs.length) { // continue
+                                return setTimeout(_checkDomain, _interval += 1009);
+                            }
+                            var data = packs[0].data;
+                            var _cert = base.Certificate.parsePublicCertificate(data.owner);
+                            if(cert.pub == _cert.pub) {
+                                this.setState({ success: transl("Account has been successfully registered."), progress: null });
+                                //setTimeout(application.reloadPage, 3559);
+
+                            } else {
+                                this.setState({ error: transl("Domain is already registered by another person."), progress: null });
+                            }
+
+                        }.bind(this));
+
+                    }.bind(this);
+                    setTimeout(_checkDomain, _interval);
 
                 }.bind(this));
 
@@ -135,7 +180,7 @@ var RegistrationForm = $class({
             }
         };
         // Invite code has been sent to your email ''. Check your email.
-        xhr.open("GET", "http://iv.base.network/email="+encodeURIComponent(email), true);
+        xhr.open("GET", "http://iv.base.network/invite/?email="+encodeURIComponent(email), true);
         xhr.send();
     }
 
