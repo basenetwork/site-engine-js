@@ -2,11 +2,11 @@ var Comment = $class({
     render: function() {
         var element = this.props.element;
         return(
-            <div className="comment media">
-                <div className="media-left">
+            <div className="comment">
+                <div className="comment-ico">
                     <UserIcon user={element.author} />
                 </div>
-                <div className="media-body">
+                <div className="comment-body">
                     <a name={element.name} />
                     <UserName user={element.author} /> &nbsp;
                     <span className="datetime">{element.datetime()}</span>
@@ -21,10 +21,11 @@ var Comment = $class({
 var CommentNew = $class(Form, {
     render: function() {
         return (
-            <form onSubmit={this.submit} className="row">
-                <div className="col-sm-1">
+            <form onSubmit={this.submit} className="comment">
+                <div className="comment-ico">
+                    &nbsp;
                 </div>
-                <div className="col-sm-7">
+                <div className="comment-body">
                     <div className="form-group">
                         {this.$inputText("text", {placeholder: "New comment"})}
                     </div>

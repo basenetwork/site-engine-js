@@ -97,7 +97,9 @@ var MainPage = $class(Page, {
         return (
         <div className="container">
             <div className="row">
-                {this.children().map(this.$ChildItem)}
+                {this.children().sort(function(a, b){
+                    return a.name > b.name
+                }).map(this.$ChildItem)}
             </div>
             {this.isAvailableToAdd() &&
             <div className="row">

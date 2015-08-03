@@ -242,6 +242,21 @@ a:hover {
     list-style: none;
     min-height: 70px;
     margin-top: 1.5em;
+    max-width: 500px;
+    display: table-row;
+}
+.comment-ico {
+    width: 50px;
+    display: table-cell;
+}
+.comment-ico .user-icon {
+    position: absolute;
+
+}
+.comment-body {
+    max-width: 500px;
+    display: table-cell;
+    padding-bottom: 2em;
 }
 
 /******* user icon *********/
