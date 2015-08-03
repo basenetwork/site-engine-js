@@ -1,4 +1,7 @@
 
+//----- css ------------
+//include ./main.css
+
 //----- import ------------
 //include react-0.13.3/build/react.min.js
 

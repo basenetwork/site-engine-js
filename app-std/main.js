@@ -1,4 +1,7 @@
 
+//----- css ------------
+//include ./main.css
+
 //----- std libs ---------
 //include react-0.13.3/build/react.min.js
 //include jquery/jquery-2.1.4.min.js
