@@ -40,14 +40,14 @@ var Video = $class(Page, {
     $Header: function() {
         return(
             <div className="video-page">
-                <div className="row video-cont">
+                <div className="video-cont">
                     <CVideo autoplay="true" controls="controls" src={this.get("video")} />
                 </div>
-                <div className="row video-description">
-                    <div className="col-xs-1">
+                <div className="video-description">
+                    <div className="col-xs-2">
                         <UserIcon user={this.author()} />
                     </div>
-                    <div className="col-xs-9">
+                    <div className="col-xs-7">
                         <UserName user={this.author()} /> &nbsp;
                         <span className="datetime">{this.datetime()}</span>
                         <p>{this.get('title')}</p>

@@ -40,14 +40,14 @@ var Photo = $class(Page, {
     $Header: function() {
         return(
             <div className="photo-page">
-                <div className="row photo-cont">
+                <div className="photo-cont">
                     <Img src={this.get("photo")} alt={this.get("title")} />
                 </div>
-                <div className="row photo-description">
-                    <div className="col-xs-1">
+                <div className="photo-description">
+                    <div className="col-xs-2">
                         <UserIcon user={this.author()} />
                     </div>
-                    <div className="col-xs-9">
+                    <div className="col-xs-7">
                         <UserName user={this.author()} /> &nbsp;
                         <span className="datetime">{this.datetime()}</span>
                         <p>{this.get('title')}</p>

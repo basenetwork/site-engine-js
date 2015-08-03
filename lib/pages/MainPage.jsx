@@ -4,7 +4,7 @@
 var SiteSection = $class({
     render: function() {
         var e = this.props.element;
-        return <div key={e.key} className={"row col-sm-6 site-item site-item-"+e.type()}>
+        return <div key={e.key} className="col-sm-5 site-item">
                 {e.get("icon") &&
                 <a href={e.path} className="col-xs-2">
                     <i className={"glyphicon glyphicon-"+e.get("icon")}  style={{backgroundColor: e.get("color") }}></i>

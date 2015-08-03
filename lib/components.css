@@ -149,10 +149,12 @@ a:hover {
     color: #fff;
 }
 .photo-page .photo-description {
-    padding: 0.5em 4em;
+    padding: 0.7em 5%;
     background-color: #000;
     color: #fff;
     margin-bottom: 3em;
+    display: table;
+    width: 100%;
 }
 
 /******* video *********/
@@ -195,10 +197,12 @@ a:hover {
     color: #fff;
 }
 .video-page .video-description {
-    padding: 0.5em 4em;
+    padding: 0.5em 5%;
     background-color: #000;
     color: #fff;
     margin-bottom: 3em;
+    display: table;
+    width: 100%;
 }
 
 /******* article *********/
