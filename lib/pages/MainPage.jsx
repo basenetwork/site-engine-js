@@ -28,10 +28,10 @@ var SiteSectionNew = $class(Form, {
                     {this.$inputSelect("type", {
                         placeholder: "type of page",
                         values:[
-                            { value:"Blog", icon: "book" },
-                            { value:"Chat", icon: "comment" },
-                            { value:"Photo album", icon: "camera" },
-                            { value:"Video list", icon: "film" },
+                            { value:"Blog",   label:"Blog", icon: "book" },
+                            { value:"Chat",   label:"Chat", icon: "comment" },
+                            { value:"Photos", label:"Photo album", icon: "camera" },
+                            { value:"Videos", label:"Video list", icon: "film" },
                         ]
                     })}
                 </div>
