@@ -139,8 +139,21 @@ var RegistrationForm = $class({
                             var data = packs[0].data;
                             var _cert = base.Certificate.parsePublicCertificate(data.owner);
                             if(cert.pub == _cert.pub) {
-                                this.setState({ success: transl("Account has been successfully registered."), progress: null });
-                                //setTimeout(application.reloadPage, 3559);
+                                this.setState({ progress: this.state.progress + 1 });
+
+                                // set site info (title, js-engine)
+                                base.core.postData({
+                                    storage: "D",
+                                    ring: 1,
+                                    uid: domain,
+                                    data: {
+                                        title: name
+                                    }
+                                }, function(err){
+                                    if(err) return this.setState({ success: transl("Setting of account info has been failed."), progress: null });
+
+                                    this.setState({ success: transl("Account has been successfully registered."), progress: null });
+                                }.bind(this));
 
                             } else {
                                 this.setState({ error: transl("Domain is already registered by another person."), progress: null });

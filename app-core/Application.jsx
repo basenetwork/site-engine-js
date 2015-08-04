@@ -51,7 +51,6 @@ var Application = $class({
                     <h4>{transl("Account")}</h4>
                     {cert.isAnonymous() ?
                         <div>
-                            reg-step1
                         </div>
                     :
                         <div>
@@ -98,7 +97,7 @@ var Application = $class({
 
     init: function() {
         var cert = base.Accounts.getCurrentCertificate();
-        cert.rsign || cert.loadRegistrationInfo(function(err) {
+        cert.rsign && cert.name || cert.loadRegistrationInfo(function(err) {
             this.setState({
                 error: err,
                 loading: false
@@ -146,6 +145,21 @@ var Application = $class({
         } catch(e) {
             alert(transl(e));
         }
+    },
+
+    setAccountInfo: function(info) {
+        var cert = base.Accounts.getCurrentCertificate();
+        info.name = info.name || cert.name;
+        base.core.postData({
+            storage: "D",
+            ring: 1,
+            uid: cert.pub,
+            data: info // <- {name, icon, ...}
+        }, function(err){
+            if(err) return this.setState({ success: transl("Setting of account info has been failed."), progress: null });
+
+            this.setState({ success: transl("Account has been successfully registered."), progress: null });
+        }.bind(this));
     },
 
     //-------------- static methods ----------------------------
