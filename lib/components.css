@@ -265,6 +265,17 @@ a:hover {
     height: 40px;
     border-radius: 100px;
     overflow: hidden;
+    color: #fff;
+    text-transform: capitalize;
+    font-weight: 100;
+    text-align: center;
+}
+.user-icon span {
+    cursor: inherit;
+    position: relative;
+    top:20%;
+    font-size: 1em;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 .user-icon img {
     width: 100%;
