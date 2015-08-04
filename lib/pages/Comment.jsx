@@ -27,10 +27,10 @@ var CommentNew = $class(Form, {
                 </div>
                 <div className="comment-body">
                     <div className="form-group">
-                        {this.$inputText("text", {placeholder: "New comment"})}
+                        {this.$inputText("text", {placeholder: "New comment", required: true})}
                     </div>
                     <div className="form-group">
-                        <button type="submit" className="btn btn-primary">Add comment</button>
+                        <button type="submit" disabled={this.state.disabled} className="btn btn-primary">Add comment</button>
                     </div>
                 </div>
             </form>

@@ -6,7 +6,7 @@ var VideoEdit = $class(Form, {
                 <div className="form-group row">
                     <div className="col-md-1">
                         <label>{transl("file")}</label>
-                        {this.$inputFile("video", { placeholder: "video" })}
+                        {this.$inputFile("video", { placeholder: "video", required:true })}
                     </div>
                     <div className="col-md-4">
                         <label>{transl("title")}</label>
@@ -98,13 +98,13 @@ var VideoNew = $class(Form, {
         return (
             <form onSubmit={this.submit} className="row form-group">
                 <div className="col-sm-2">
-                    {this.$inputFile("video", {placeholder: "File"})}
+                    {this.$inputFile("video", {placeholder: "File", required: true})}
                 </div>
                 <div className="col-sm-4">
                     <div className="input-group">
                         {this.$input("title", {placeholder: "Title"})}
                         <span className="input-group-btn">
-                            <button type="submit" className="btn btn-primary">Add video</button>
+                            <button type="submit" className="btn btn-primary" disabled={this.state.disabled}>Add video</button>
                         </span>
                     </div>
                 </div>

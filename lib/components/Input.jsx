@@ -35,15 +35,29 @@ var Input = $class({
         return {}
     },
 
+    isValid: function() {
+        var fmt = this.props.options.format;
+        return !fmt || (fmt instanceof RegExp && fmt || {
+            title: /^\S/,
+            name: /^[a-z0-9A-Z\-]+$/,
+            int: /^\d+$/,
+            number: /^\d+\.?\d*$/,
+            float: /^\d+\.?\d*$/,
+            email: /^[a-z0-9A-Z\.\-_\+]+@[a-z0-9A-Z\.\-_\+]+$/
+        }[fmt] || /.*/).test(this.value()||"");
+    },
+
     render: function () {
         var type = this.props.type;
         var options = this.props.options || {};
         var value = this.value();
+        var err = !value || this.isValid()? "" : " inp-error";
+
         switch(type) {
             default:
             case "line":
                 return (
-                    <input type="text" onChange={this.onChangeInput} className="form-control" defaultValue={value} placeholder={transl(options.placeholder)} />
+                    <input type="text" onChange={this.onChangeInput} className={"form-control"+err} defaultValue={value} placeholder={transl(options.placeholder)} />
                 );
 
             case "tel":
@@ -53,12 +67,12 @@ var Input = $class({
             case "color":
             case "hidden":
                 return (
-                    <input type={type} onChange={this.onChangeInput} className={"form-control input-"+type} defaultValue={value} placeholder={transl(options.placeholder)} />
+                    <input type={type} onChange={this.onChangeInput} className={"form-control input-"+type+err} defaultValue={value} placeholder={transl(options.placeholder)} />
                 );
 
             case "checkbox":
                 return(
-                    <div className="checkbox">
+                    <div className={"checkbox"+(err? "" : " has-error")}>
                         <label>
                             <input type="checkbox" onChange={this.onChangeCheckbox} defaultChecked={value} placeholder={transl(options.placeholder)} />
                             {transl(options.label)}
@@ -68,12 +82,12 @@ var Input = $class({
 
             case "text":
                 return(
-                    <textarea onChange={this.onChangeInput} className="form-control" defaultValue={value} placeholder={transl(options.placeholder)} />
+                    <textarea onChange={this.onChangeInput} className={"form-control"+err} defaultValue={value} placeholder={transl(options.placeholder)} />
                 );
 
             case "select":
                 return (
-                    <select onChange={this.onChangeInput} className="form-control" defaultValue={value} placeholder={transl(options.placeholder)}>
+                    <select onChange={this.onChangeInput} className={"form-control"+err} defaultValue={value} placeholder={transl(options.placeholder)}>
                     {(options.values||[]).map(function(val, i){
                         if(typeof val === "string") val = {value: val, label: val, icon: null};
                         // set default value
@@ -142,6 +156,7 @@ var Input = $class({
         if(arguments.length) { // set
             this.setValue(value);
             this.setState({});
+            this.props.form && this.props.form.refreshForm();
         } else { // get
             return this.getValue();
         }

@@ -23,7 +23,7 @@ var SiteSectionNew = $class(Form, {
     render: function() {
         return (
             <form onSubmit={this.submit} className="form-group">
-                <h4>{transl("New Plugin")}</h4>
+                <h4>{transl("New section")}</h4>
                 <div className="form-group">
                     {this.$inputSelect("type", {
                         placeholder: "type of page",
@@ -36,10 +36,10 @@ var SiteSectionNew = $class(Form, {
                     })}
                 </div>
                 <div className="form-group">
-                    {this.$input("name", { placeholder: "name" })}
+                    {this.$input("name", { placeholder: "name", format:"name", required: true })}
                 </div>
                 <div className="form-group">
-                    <button type="submit" className="btn btn-primary">{transl("Add Plugin")}</button>
+                    <button type="submit" disabled={this.state.disabled} className="btn btn-primary">{transl("Add section")}</button>
                 </div>
             </form>
         );

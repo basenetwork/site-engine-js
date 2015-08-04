@@ -10,10 +10,10 @@ var ArticleEdit = $class(Form, {
                     </div>
                     <div className="col-md-5">
                         <label>{transl("title")}</label>
-                        {this.$input("title", { placeholder: "title" })}
+                        {this.$input("title", { placeholder: "title", required: true })}
 
                         <label>{transl("description")}</label>
-                        {this.$inputText("description", { placeholder: "description" })}
+                        {this.$inputText("description", { placeholder: "description", required:true })}
 
                         <label>{transl("content")}</label>
                         {this.$inputText("body", { placeholder: "content" })}
@@ -26,7 +26,7 @@ var ArticleEdit = $class(Form, {
                         ]})}
                         <br/>
                         <br/>
-                        <button type="submit" className="btn btn-primary">{transl("Save")}</button>
+                        <button type="submit" className="btn btn-primary" disabled={this.state.disabled}>{transl("Save")}</button>
                     &nbsp;
                         <button type="button" className="btn btn-default" onClick={this.close}>{transl("Close")}</button>
                     </div>
@@ -118,13 +118,13 @@ var ArticleNew = $class(Form, {
                 {this.$inputFile("image", {placeholder: "Article image"})}
                 </div>
                 <div className="form-group col-sm-6">
-                    {this.$input("title", {placeholder: "Title"})}
+                    {this.$input("title", {placeholder: "Title", required: true})}
                 </div>
                 <div className="form-group col-sm-6">
-                    {this.$inputText("description", {placeholder: "Description"})}
+                    {this.$inputText("description", {placeholder: "Description", required: true})}
                 </div>
                 <div className="form-group col-sm-6">
-                    <button type="submit" className="btn btn-primary">{transl("Add article")}</button>
+                    <button type="submit" className="btn btn-primary" disabled={this.state.disabled}>{transl("Add article")}</button>
                 </div>
 
             </form>

@@ -6,7 +6,7 @@ var PhotoEdit = $class(Form, {
                 <div className="form-group row">
                     <div className="col-md-1">
                         <label>file</label>
-                        {this.$inputFile("photo", { placeholder: "photo" })}
+                        {this.$inputFile("photo", { placeholder: "photo", required:true })}
                     </div>
                     <div className="col-md-4">
                         <label>title</label>
@@ -24,7 +24,7 @@ var PhotoEdit = $class(Form, {
 
                         <br/>
                         <br/>
-                            <button type="submit" className="btn btn-primary">{transl("Save")}</button>
+                            <button type="submit" className="btn btn-primary" disabled={this.state.disabled}>{transl("Save")}</button>
                         &nbsp;
                             <button type="button" className="btn btn-default" onClick={this.close}>{transl("Close")}</button>
                     </div>
@@ -98,13 +98,13 @@ var PhotoNew = $class(Form, {
         return (
             <form onSubmit={this.submit} className="row form-group">
                 <div className="col-sm-2">
-                    {this.$inputFile("photo", {placeholder: "File"})}
+                    {this.$inputFile("photo", {placeholder: "File", required: true})}
                 </div>
                 <div className="col-sm-4">
                     <div className="input-group">
                         {this.$input("title", {placeholder: "Title"})}
                         <span className="input-group-btn">
-                            <button type="submit" className="btn btn-primary">Add photo</button>
+                            <button type="submit" className="btn btn-primary" disabled={this.state.disabled}>Add photo</button>
                         </span>
                     </div>
                 </div>

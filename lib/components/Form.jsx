@@ -9,6 +9,7 @@ var Form = $class({
             for(var param in this.defaultValues)
                 this.setDefault(param, this.defaultValues[param]);
         }
+        setTimeout(this.refreshForm.bind(this));
         return {};
     },
 
@@ -23,7 +24,7 @@ var Form = $class({
         var e = this.element();
         var type = options.type || "line";
         return (
-            <Input name={param} ref={param} key={param+e.key} type={type} element={e} options={options} />
+            <Input form={this} name={param} ref={param} key={param+e.key} type={type} element={e} options={options} />
         )
     },
 
@@ -73,6 +74,21 @@ var Form = $class({
                 vals[i] = this.refs[i].value();
             }
         return vals;
+    },
+
+    refreshForm: function(){
+        var dsbl = false, inp;
+        if(this.refs)
+        for(var i in this.refs)
+        if((inp = this.refs[i]) && inp.value) {
+            var val = inp.value();
+            if(typeof val === "string") val=val.trim();
+            if(inp.props.options.required && !val || !inp.isValid()) {
+                dsbl = true;
+                break;
+            }
+        }
+        if(this.state.disabled !== dsbl) this.setState({ disabled: dsbl });
     },
 
     close: function() {
