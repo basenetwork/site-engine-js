@@ -14,6 +14,7 @@ var Application = $class({
         var state = this.state;
         var accounts = base.Accounts.getAccounts();
         var cert = base.Accounts.getCurrentCertificate();
+        var accDomain = cert.name? cert.name + '.base.network' : "";
 
         // refresh core-frame style (at top window context)
         base.core.postMessageToTopWindow('setStyle', [[
@@ -54,15 +55,9 @@ var Application = $class({
                         </div>
                     :
                         <div>
-
-                            {cert.name && <div >
-
-                                <b>{cert.name}</b>
-                                <br/>
-
+                            {accDomain && <div >
                                 <label className="col-sm-2">{transl("Domain:")}</label>
-
-                                <a href={"http://"+cert.name+".base.network/"}><b>{cert.name+".base.network"}</b></a>
+                                <a href={"//"+accDomain}><b>{accDomain}</b></a>
                             </div>}
                         </div>
                     }

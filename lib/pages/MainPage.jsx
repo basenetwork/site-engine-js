@@ -103,10 +103,10 @@ var MainPage = $class(Page, {
             </div>
             {this.isAvailableToAdd() &&
             <div className="row">
-                <a className="col-xs-2">
-                    <i className="icon glyphicon glyphicon-plus"></i>
-                </a>
-                <div className="col-xs-5">
+                <div className="col-sm-1">
+                    <h4><i className="icon glyphicon glyphicon-plus"></i></h4>
+                </div>
+                <div className="col-sm-4">
                     {this.$FormNewItem()}
                 </div>
             </div>
