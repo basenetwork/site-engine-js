@@ -139,6 +139,9 @@ var RegistrationForm = $class({
                             var data = packs[0].data;
                             var _cert = base.Certificate.parsePublicCertificate(data.owner);
                             if(cert.pub == _cert.pub) {
+                                // refresh certificate. save registrar sign
+                                base.Accounts.setRegistrarSign(_cert.rsign);
+
                                 this.setState({ progress: this.state.progress + 1 });
 
                                 // set site info (title, js-engine)
