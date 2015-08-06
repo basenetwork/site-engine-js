@@ -18,7 +18,8 @@ var RegistrationForm = $class({
             <form className="panel-body" onSubmit={this.onSubmit}>
                 <div className="form-group">
                     <label for="regName">{transl("nickname")}</label>
-                    <input type="text" className="form-control" id="regName" placeholder="my-domain.base.network" disabled={!!this.state.progress} />
+                    <input type="text" className="form-control" id="regName" placeholder="nickname" disabled={!!this.state.progress} />
+                    <small className="text-muted">{transl("Your personal domain will be: ")} <i>nickname</i>.base.network</small>
                 </div>
                 <div className="form-group">
                     <label for="regInviteCode">

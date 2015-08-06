@@ -66,7 +66,7 @@ var Article = $class(Page, {
                     {img && <Img src={img} />}
                 </div>
                 <div className="article-content row col-md-8">
-                    {this.get("body")}
+                    {this.get("description") || String(this.get("body")).truncate(200)}
                 </div>
             </div>
         );

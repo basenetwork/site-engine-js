@@ -22,16 +22,23 @@ body{
     background: #fff;
     transition: 0.5s;
 }
-.btn-close:hover, .btn-close {
+.btn-close {
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    opacity: .2;
+    text-shadow: 0 1px 0 #fff;
     cursor: pointer;
     text-decoration: none;
     font-size: 2em;
-    color: #888;
     position: fixed;
     top:0;
     right: 0;
     text-align: center;
     width: 50px;
+}
+.btn-close:hover {
+    opacity: .5;
 }
 .top-icon{
     position: fixed;
@@ -81,7 +88,11 @@ h4 {
 .block {
     margin: 1em 0;
 }
+.profile-reg-status button {
+    margin-top: 1em;
+}
 .profile-reg-status {
+    margin-top: 1em;
     text-align: center;
     color: #888;
     font-size: 12px;

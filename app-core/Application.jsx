@@ -41,8 +41,8 @@ var Application = $class({
 
                         {cert.isAnonymous() && !state.fRegForm &&
                         <div className="profile-reg-status">
-                            {transl("This account is not registered!")}
-                            <div><button className="btn btn-default btn-sm" onClick={this.evToggle("fRegForm")}>{transl("Register this account")}</button></div>
+                            {transl("This account is anonymous.")}
+                            <div><button className="btn btn-default btn-sm" onClick={this.evToggle("fRegForm")}>{transl("Verify this account")}</button></div>
                         </div>}
 
                     </div>
