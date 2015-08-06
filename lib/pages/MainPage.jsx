@@ -36,7 +36,7 @@ var SiteSectionNew = $class(Form, {
                     })}
                 </div>
                 <div className="form-group">
-                    {this.$input("name", { placeholder: "name", format:"name", required: true })}
+                    {this.$input("name", { placeholder: "name", format:/^[^\/\\\?\#\@\:\,\&\%\+\=\`\~\|\[\]\{\}\'\"]+$/, required: true })}
                 </div>
                 <div className="form-group">
                     <button type="submit" disabled={this.state.disabled} className="btn btn-primary">{transl("Add section")}</button>
