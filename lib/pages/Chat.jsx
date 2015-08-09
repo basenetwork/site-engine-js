@@ -1,3 +1,3 @@
-var Chat = $class(Page, {
+$component('chat', Page, {
 
 });

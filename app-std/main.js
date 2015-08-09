@@ -16,7 +16,8 @@
 //---- form components -----------
 //include ../lib/components/Input.jsx
 //include ../lib/components/Img.jsx
-//include ../lib/components/CVideo.jsx
+//include ../lib/components/Video.jsx
+//include ../lib/components/Audio.jsx
 //include ../lib/components/UserInfo.jsx
 //include ../lib/components/Form.jsx
 
@@ -24,10 +25,11 @@
 //include ../lib/pages/Page.jsx
 //include ../lib/pages/Blog.jsx
 //include ../lib/pages/ErrorPage.jsx
-//include ../lib/pages/MainPage.jsx
+//include ../lib/pages/HomePage.jsx
 //include ../lib/pages/Chat.jsx
 //include ../lib/pages/Photos.jsx
 //include ../lib/pages/Videos.jsx
+//include ../lib/pages/Audios.jsx
 //include ../lib/pages/Comment.jsx
 
 

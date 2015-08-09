@@ -36,7 +36,7 @@ var ArticleEdit = $class(Form, {
     }
 });
 
-var Article = $class(Page, {
+$component('article', Page, {
     tplFormEdit: ArticleEdit,
 
     $Header: function() {
@@ -132,12 +132,12 @@ var ArticleNew = $class(Form, {
     },
 
     onSubmit: function() {
-        this.set('type', 'Article');
+        this.set('type', 'article');
         this.set('name', new Date().toISOString().replace(/[^\d]/g, ''));
     }
 });
 
-var Blog = $class(Page, {
+$component('blog', Page, {
     tplChildItem: ArticleItem,
     tplChildForm: ArticleNew
 });

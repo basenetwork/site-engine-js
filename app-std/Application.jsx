@@ -2,8 +2,9 @@ var Application = $class({
     render: function() {
         var root = Application.element("/"); // main page
         var page = Application.element(); // current page
-        var pageType = page.type();
-        var pageClass = context[pageType];
+        var pageType = String(page.type()).toCSSFormat();
+        var Component = Application.components[pageType];
+
         return (
             <div>
                 <header className="navbar navbar-inverse navbar-default navbar-fixed-top ">
@@ -32,9 +33,9 @@ var Application = $class({
                         </nav>
                     </div>
                 </header>
-                {pageClass?
-                    $element(pageClass, { element: page }) :
-                    $element(ErrorPage, { error: "Unknown Page Type", details: page})
+                {Component?
+                    $element(Component, { element: page }) :
+                    $element(ErrorPage, { error: "Unknown Page Type", details: [pageType, page]})
                 }
             </div>
         );
@@ -75,6 +76,10 @@ var Application = $class({
 
     //-------------- static methods ----------------------------
     statics: {
+        components: {
+            // type: 'classHandler', ...
+        },
+
         siteInfo: baseAPI.getCurrentSiteInfo(),
 
         element: function(path, host) {

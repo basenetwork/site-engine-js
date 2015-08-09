@@ -30,12 +30,11 @@ var STD_ICONS = [
 
 var Input = $class({
     getInitialState: function(){
-        //if(this.props.value !== undefined)
-        //    this.element().set(this.props.value);
         return {}
     },
 
     isValid: function() {
+        if(this.state.error) return false;
         var fmt = this.props.options.format;
         return !fmt || (fmt instanceof RegExp && fmt || {
             title: /^\S/,
@@ -48,6 +47,7 @@ var Input = $class({
     },
 
     render: function () {
+        var st = this.state;
         var type = this.props.type;
         var options = this.props.options || {};
         var value = this.value();
@@ -134,7 +134,8 @@ var Input = $class({
                 return (
                     <div className="form-control input-file">
                         {value && (isImage(value)? <div id={setImg(value)} /> : <b>.{getExtension(value)}</b>)}
-                        {!value && options.placeholder && <span>{transl(options.placeholder)}</span>}
+                        {!st.error && !value && options.placeholder && <span>{transl(options.placeholder)}</span>}
+                        {st.error && <div className="text-danger">{transl(st.error)}</div>}
                         <input type="file" key={value} onChange={this.onChangeFile} />
                         {value && <a href="#" title="clear" onClick={this.reset} >&times;</a>}
                     </div>
@@ -181,8 +182,10 @@ var Input = $class({
     onChangeFile: function(ev) {
         var files = ev.currentTarget.files;
         if(!files || !files.length) return;
+        this.state.error = null;
+        // todo: show progress
         baseAPI.uploadFile({ file: files[0] }, function(err, linkInf){ // upload done
-            if(err) return; // todo: show error
+            if(err) return this.setState({ error: 'Upload error' });
             this.value(linkInf.uri);
             this.setState({});
         }.bind(this));

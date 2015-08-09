@@ -1,4 +1,4 @@
-var Comment = $class({
+var Comment = $component('comment', {
     render: function() {
         var element = this.props.element;
         return(

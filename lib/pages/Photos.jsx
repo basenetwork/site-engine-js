@@ -34,7 +34,7 @@ var PhotoEdit = $class(Form, {
     }
 });
 
-var Photo = $class(Page, {
+$component('photo', Page, {
     tplFormEdit: PhotoEdit,
 
     $Header: function() {
@@ -118,8 +118,7 @@ var PhotoNew = $class(Form, {
     }
 });
 
-var PhotoAlbum = $class(Page, {
+$component('photo-album,photos', Page, {
     tplChildItem: PhotoItem,
     tplChildForm: PhotoNew
 });
-var Photos = PhotoAlbum;

@@ -169,6 +169,11 @@ input.inp-error:focus {
 }
 
 /******* video *********/
+.audio-item {
+    margin-top: 1.4em;
+}
+
+/******* video *********/
 .video-item {
     margin-top: 1em;
     border: 1px solid #ddd;

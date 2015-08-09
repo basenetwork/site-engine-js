@@ -1,4 +1,4 @@
-var Page = $class({
+var Page = $component('page', {
 
     tplFormEdit: 'FormPage',
 

@@ -28,10 +28,11 @@ var SiteSectionNew = $class(Form, {
                     {this.$inputSelect("type", {
                         placeholder: "type of page",
                         values:[
-                            { value:"Blog",   label:"Blog", icon: "book" },
-                            { value:"Chat",   label:"Chat", icon: "comment" },
-                            { value:"Photos", label:"Photo album", icon: "camera" },
-                            { value:"Videos", label:"Video list", icon: "film" },
+                            { value:"blog",   label:"Blog", icon: "book" },
+                            { value:"chat",   label:"Chat", icon: "comment" },
+                            { value:"photos", label:"Photo album", icon: "camera" },
+                            { value:"audios", label:"Audio list", icon: "music" },
+                            { value:"videos", label:"Video list", icon: "film" },
                         ]
                     })}
                 </div>
@@ -58,7 +59,7 @@ var SiteSectionNew = $class(Form, {
     }
 });
 
-var MainPageEditForm = $class(Form, {
+var HomePageEditForm = $class(Form, {
 
     //render: function() {
     //    return (
@@ -87,9 +88,9 @@ var MainPageEditForm = $class(Form, {
 });
 
 
-var MainPage = $class(Page, {
+$component('homepage', Page, {
 
-    //tplFormEdit: MainPageEditForm,
+    //tplFormEdit: HomePageEditForm,
     tplChildItem: SiteSection,
     tplChildForm: SiteSectionNew,
 

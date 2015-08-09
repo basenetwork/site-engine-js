@@ -1,4 +1,4 @@
-var CVideo = $class({
+var Video = $class({
     getInitialState: function(){
         return {}
     },
