@@ -110,8 +110,10 @@ var Form = $class({
         // todo: check format of input values
         if(this.onSubmit(ev) === false) return;
 
+        this.setState({ disabled: true });
         var element = this.element();
         element.save(function(err){
+            this.setState({ disabled: false });
             if(!err) {
                 this._element = null;
                 this.onAfterSubmit(element);
