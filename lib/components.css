@@ -285,6 +285,7 @@ input.inp-error:focus {
     text-transform: capitalize;
     font-weight: 100;
     text-align: center;
+    position: relative;
 }
 .user-icon span {
     cursor: inherit;

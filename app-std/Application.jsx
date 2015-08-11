@@ -23,7 +23,7 @@ var Application = $class({
                             {root.children().map(function(e){
                                 return <li key={e.key} className={e.isActive() && "active" || null}>
                                     <a href={e.href()}>
-                                        {e.data.icon && <i className={"glyphicon glyphicon-"+e.data.icon}></i>}
+                                        {e.data && e.data.icon && <i className={"glyphicon glyphicon-"+e.data.icon}></i>}
                                         &nbsp;&nbsp;
                                         {e.toString()}
                                     </a>

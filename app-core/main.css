@@ -11,6 +11,44 @@ html, body {
 body{
     /*border:1px solid red;*/
 }
+
+.pulse {
+    -webkit-animation: pulse 1s linear infinite;
+    animation: pulse 1s linear infinite;
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+@-webkit-keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+.prg-loading {
+    width: 40px;
+    height: 40px;
+    border: 4px solid transparent;
+    border-color: rgb(93, 204, 255) transparent transparent transparent;
+    border-radius: 21px;
+    position: absolute;
+    top:2px; right: 2px;
+    -webkit-animation: rotation 1s linear infinite;
+    animation: rotation 1s linear infinite;
+}
+@keyframes rotation {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(180deg); }
+    100% { transform: rotate(360deg); }
+}
+@-webkit-keyframes rotation {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(180deg); }
+    100% { transform: rotate(360deg); }
+}
+
 .settings-block {
     width: 100%;
     max-width: 400px;

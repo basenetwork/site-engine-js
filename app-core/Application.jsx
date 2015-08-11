@@ -2,6 +2,11 @@ var Application = $class({
 
     getInitialState: function() {
         setTimeout(this.init.bind(this));
+        setInterval(function(){
+            base.core._loading === this.state.loadingProgress || this.setState({
+                loadingProgress: base.core._loading
+            });
+        }.bind(this), 313);
         return {
             error: false,
             loading: true,
@@ -24,11 +29,13 @@ var Application = $class({
 
         if(!state.fExpandedWindow) return (
             <div className="window window-expand-0">
-                <a href="#" className="top-icon" onClick={this.evToggle("fExpandedWindow")}>
+                <a href="#" className={"top-icon"+(localStorage._expnd?"":" pulse")} onClick={this.evToggle("fExpandedWindow")}>
                     <UserIcon user={cert.toString()} />
                 </a>
+                {this.state.loadingProgress && <div className="prg-loading" />}
             </div>
         );
+        localStorage._expnd = 1;
         //
         return (
             <div className="window window-expand-1">
