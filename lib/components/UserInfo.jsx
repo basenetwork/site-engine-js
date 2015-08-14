@@ -1,7 +1,7 @@
-var STD_ICONS_ANON = ['star','music','heart','glass','signal','font','leaf','gift','fire','heart-empty','phone',
+var STD_ICONS_ANON = [
+    'star','music','heart','glass','eye-open','leaf','gift','fire','heart-empty','phone','star-empty',
     'flash','send','tower','tree-conifer','tree-deciduous','apple','knight','king','queen','tent','piggy-bank',
-    'education','grain','paperclip','bell','picture','camera','book','th-large','asterisk','pencil','cloud',
-    'star-empty'
+    'education','grain','paperclip','bell','picture','camera','book','asterisk','pencil','cloud'
 ];
 
 //-------------- UserIcon ----------------------
