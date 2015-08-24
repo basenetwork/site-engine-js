@@ -12,15 +12,20 @@ var Video = $class({
             }.bind(this));
         return (
             <video
-                src={this.state.srcURL} onClick={this.onClick}
-                width={this.props.width} height={this.props.height}
-                autoplay={this.props.autoplay} preload={this.props.preload}
-                controls={this.props.controls} poster={this.props.poster}
+                src={this.state.srcURL}
+                onClick={this.onClick}
+                width={this.props.width}
+                height={this.props.height}
+                autoplay={this.props.autoplay}
+                preload={this.props.preload}
+                controls={this.props.controls}
+                poster={this.props.poster}
             />
         );
     },
 
     onClick: function(ev) {
+        if(!/\bChrome\//.test(navigator.userAgent)) return;
         var vd = ev.currentTarget;
         if(vd.paused) vd.play();
         else vd.pause();
