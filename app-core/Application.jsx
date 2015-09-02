@@ -55,20 +55,17 @@ var Application = $class({
                     </div>
                     {cert.isAnonymous() && state.fRegForm && <RegistrationForm onClose={this.evToggle("fRegForm")} />}
 
+                    {!cert.isAnonymous() &&
                     <div className="block row">
-                    <h4>{transl("Account")}</h4>
-                    {cert.isAnonymous() ?
-                        <div>
-                        </div>
-                    :
+                        <h4>{transl("Account")}</h4>
                         <div>
                             {accDomain && <div >
                                 <label className="col-sm-2">{transl("Domain:")}</label>
                                 <a href={"//"+accDomain}><b>{accDomain}</b></a>
                             </div>}
                         </div>
-                    }
                     </div>
+                    }
                     <div className="block row keys-info">
                         <h4>{transl("Private key")}</h4>
                         <input type="text" className="form-control" value={base.Accounts.getCurrentPrivateKey()} disabled="disabled" />
