@@ -87,10 +87,11 @@ var Application = $class({
         },
 
         setLocation: function(path, byHistory){
-            if(!window.history) {
+            if(!window.history || /^[a-z]*\/\//.test(path)) {
                 window.location = path;
                 return;
-            } else if(!byHistory) {
+            }
+            if(!byHistory) {
                 window.history.pushState(path, path, path);
             }
             Application.onElementUpdate();

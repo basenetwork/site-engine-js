@@ -52,16 +52,27 @@ var UserIcon = $class(UserInfo, {
         );
         var icon = this.state.userInfo && this.state.userInfo.icon;
         var name = this.state.name || "";
-        return (
-            <div className="user-icon" style={{backgroundColor: this.state.color}} title={name}>
+        if(this.state.domain) return (
+            <a className="user-icon" style={{backgroundColor: this.state.color}} title={name}  href={"//" + this.state.domain}>
                 {icon? <Img src={icon} sizeLimit={50*1024} /> : name && <span>{name[0]}</span> }
-            </div>
+            </a>
+        );
+        return (
+            <b className="user-icon" style={{backgroundColor: this.state.color}} title={name}>
+                {icon? <Img src={icon} sizeLimit={50*1024} /> : name && <span>{name[0]}</span> }
+            </b>
         );
     }
 });
 
 var UserName = $class(UserInfo, {
     render: function() {
+        if(this.state.isAnonymous) return (
+            <b className="user-name user-name-anon">{this.toString()}</b>
+        );
+        if(this.state.domain) return (
+            <a href={"//"+this.state.domain} className="user-name">{this.toString()}</a>
+        );
         return (
             <b className="user-name">{this.toString()}</b>
         );

@@ -276,6 +276,12 @@ input.inp-error:focus {
 }
 
 /******* user icon *********/
+.user-name {
+    font-weight: bold;
+}
+.user-name-anon {
+    color: #666;
+}
 .user-icon  {
     width: 40px;
     height: 40px;
@@ -306,6 +312,7 @@ input.inp-error:focus {
     text-decoration: none!important;
     opacity: 0.5;
     color: #fff;
+    cursor: default;
 }
 .user-icon-anon i {
 }
