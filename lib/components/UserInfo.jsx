@@ -52,15 +52,17 @@ var UserIcon = $class(UserInfo, {
         );
         var icon = this.state.userInfo && this.state.userInfo.icon;
         var name = this.state.name || "";
-        if(this.state.domain) return (
+        var html = icon? <Img src={icon} sizeLimit={50*1024} /> : name && <span>{name[0]}</span>;
+
+        if(this.props.showLink && this.state.domain) return (
             <a className="user-icon" style={{backgroundColor: this.state.color}} title={name}  href={"//" + this.state.domain}>
-                {icon? <Img src={icon} sizeLimit={50*1024} /> : name && <span>{name[0]}</span> }
+                {html}
             </a>
         );
         return (
-            <b className="user-icon" style={{backgroundColor: this.state.color}} title={name}>
-                {icon? <Img src={icon} sizeLimit={50*1024} /> : name && <span>{name[0]}</span> }
-            </b>
+            <div className="user-icon" style={{backgroundColor: this.state.color}} title={name}>
+                {html}
+            </div>
         );
     }
 });

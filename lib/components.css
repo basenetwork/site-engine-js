@@ -283,6 +283,7 @@ input.inp-error:focus {
     color: #666;
 }
 .user-icon  {
+    display: block;
     width: 40px;
     height: 40px;
     border-radius: 100px;

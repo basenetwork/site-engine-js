@@ -4,7 +4,7 @@ var Comment = $component('comment', {
         return(
             <div className="comment">
                 <div className="comment-ico">
-                    <UserIcon user={element.author} />
+                    <UserIcon user={element.author} showLink="true" />
                 </div>
                 <div className="comment-body">
                     <a name={element.name} />
