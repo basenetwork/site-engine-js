@@ -52,6 +52,7 @@ body{
 .settings-block {
     width: 100%;
     max-width: 400px;
+    overflow: auto;
     position: fixed;
     top:0;
     right: 0;
